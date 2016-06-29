@@ -1,0 +1,46 @@
+
+<h2>Check</h2>
+
+
+<div class="form-group">
+  <label>Catagory(select One):</label>
+  <select class="form-control" ng-model='searchText'>
+    <option>Math</option>
+    <option>Science</option>
+    <option>History</option>
+    <option>Biology</option>
+  </select>
+  <br>
+</div>
+
+<table class='table'>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th>Edit/Delete</th>
+
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat='card in flashCardsArray | filter:searchText track by $index'>
+    <td>{{card.question}}</td>
+    <td>{{card.answer}}</td>
+    <td><button class='btn btn-warning glyphicon glyphicon-cog'ng-click='editCard(card)'></button>
+        <button class='btn btn-danger glyphicon glyphicon-trash' ng-click='deleteCard(card._id,$index)'></button>
+    </td>
+
+  </tr>
+
+</tbody>
+
+<tfoot>
+
+  <tr>
+    <th></th>
+    <th>Total Values {{totalValue | currency}}</th>
+    <th></th>
+
+  </tr>
+</tfoot>
+</table>
